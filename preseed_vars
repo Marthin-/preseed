@@ -1,0 +1,14 @@
+hostname=test-preseed
+ip=192.168.122.77
+mask=255.255.255.0
+gw=192.168.122.1
+dns=8.8.8.8
+vcpu=1
+memory=4096
+disk_size=32
+disk_format=qcow2
+net_bridge=virbr0
+location=http://ftp.debian.org/debian/dists/stable/main/installer-amd64/
+preseed_file=/tmp/preseed.cfg
+disk_name=/dev/sda
+proxy=""

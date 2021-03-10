@@ -1,0 +1,55 @@
+d-i debian-installer/locale string fr_FR
+d-i keyboard-configuration/xkb-keymap select fr(latin9)
+
+d-i netcfg/choose_interface select auto
+d-i netcfg/disable_autoconfig boolean true
+d-i netcfg/get_ipaddress string IP
+d-i netcfg/get_netmask string MASK
+d-i netcfg/get_gateway string GW
+d-i netcfg/get_nameservers string DNS
+d-i netcfg/confirm_static boolean true
+d-i netcfg/get_hostname string HOSTNAME
+d-i netcfg/get_domain string univ-brest.fr
+d-i netcfg/wireless_wep string
+
+d-i mirror/country string manual
+d-i mirror/http/hostname string ftp.fr.debian.org
+d-i mirror/http/directory string /debian
+d-i mirror/http/proxy string PROXY
+
+d-i passwd/root-login boolean true
+d-i passwd/make-user boolean false
+d-i passwd/root-password password ROOT_PW
+d-i passwd/root-password-again password ROOT_PW
+
+d-i clock-setup/ntp boolean false
+d-i clock-setup/utc boolean true
+d-i time/zone select Europe/Paris
+
+d-i partman-auto/disk string DISK_NAME
+d-i partman-auto/method string lvm
+d-i partman-auto-lvm/guided_size string max
+d-i partman-lvm/device_remove_lvm boolean true
+d-i partman-md/device_remove_md boolean true
+d-i partman-lvm/confirm boolean true
+d-i partman-lvm/confirm_nooverwrite boolean true
+d-i partman-auto/choose_recipe select atomic
+d-i partman-partitioning/confirm_write_new_label boolean true
+d-i partman/choose_partition select finish
+d-i partman/confirm boolean true
+d-i partman/confirm_nooverwrite boolean true
+
+d-i apt-setup/non-free boolean true
+d-i apt-setup/contrib boolean true
+d-i apt-setup/use_mirror boolean true
+d-i apt-setup/security_host string security.debian.org
+d-i apt-setup/services-select multiselect security, updates
+
+tasksel tasksel/first multiselect standard, ssh-server
+
+popularity-contest popularity-contest/participate boolean false
+
+d-i grub-installer/only_debian boolean false
+d-i grub-installer/bootdev string /dev/sda
+
+d-i finish-install/reboot_in_progress note
